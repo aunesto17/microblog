@@ -242,3 +242,7 @@ def translate():
             request.form['text'],
             request.form['sourceLang'],
             request.form['destLang'])})
+
+@app.route('/titulos')
+def titulos():
+    return render_template('titulos.html')

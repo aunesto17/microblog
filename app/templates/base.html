@@ -2,12 +2,14 @@
 <html>
   <head>
     {% if title %}
-    <title>{{ title }} - microblog</title>
+    <title>{{ title }} - Toyz and Gamers</title>
     {% else %}
-    <title>microblog</title>
+    <title>Toyz and Gamers</title>
     {% endif %}
     <link href="{{ url_for('.static', filename='css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ url_for('.static', filename='css/bootstrap-responsive.min.css') }}" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="{{ url_for('.static', filename='js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('.static', filename='js/moment.min.js') }}"></script>
@@ -35,7 +37,32 @@
     }
     </script>
   </head>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $('.carousel').carousel();
+    });
+  </script>
   <body>
+    <div class= "container" align="right">
+            <div id="social-bar">
+                <i class="fa fa-facebook-square fa-2x"></i>
+                <a href="https://www.facebook.com/paul.maquera.3">
+                    <i></i>
+                    <span>Facebook</span>
+                </a>
+                <i class="fa fa-twitter-square fa-2x"></i>
+                <a href="https://twitter.com/pol_arts">
+                    <i></i>
+                    <span>Twitter</span>
+                </a>
+                <i class="fa fa-google-plus-square fa-2x"></i>
+                <a href="https://youtube.com">
+                    <i></i>
+                    <span>Google Plus</span>
+                </a>
+            </div>
+
+        </div>
     <div class="container">
       <div class="navbar">
         <div class="navbar-inner">
@@ -43,10 +70,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="{{ url_for('index') }}">microblog</a>
+          <a class="brand" href="{{ url_for('index') }}">Toyz and Gamers</a>
             <ul class="nav">
               <li><a href="{{ url_for('index') }}">{{ _('Home') }}</a></li>
+              <li><a href="{{ url_for('titulos') }}">{{ _('Titulos') }}</a></li>
               {% if g.user.is_authenticated() %}
               <li><a href="{{ url_for('user', nickname=g.user.nickname) }}">{{ _('Your Profile') }}</a></li>
               <li><a href="{{ url_for('logout') }}">{{ _('Logout') }}</a></li>
@@ -62,6 +91,14 @@
       <div class="row">
         <div class="span12">
           {% block content %}{% endblock %}
+        </div>
+        <div class="span12">
+            <div class="well">
+                <h3>{{ _('Contacto') }}</h3>
+                <label class="control-label" for="openid">{{ _('Local Principal: Galerias Plaza - Puno, Peru') }}</label>
+                <label class="control-label" for="openid">{{ _('Telefono: 959 101 010') }}</label>
+                <label class="control-label" for="openid">{{ _('Atencion: 9:00 a.m. - 9:00 p.m.') }}</label>
+            </div>
         </div>
       </div>
     </div>   
